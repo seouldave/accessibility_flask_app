@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Accessibility - PRE~ALPHA</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<!-- Include OpenLayers library and styling, bootstrap and jquery -->
+		<script type="text/javascript" src="https://openlayers.org/en/v4.2.0/build/ol.js"></script>
+		<link rel="stylesheet" href="https://openlayers.org/en/v4.2.0/css/ol.css" type="text/css">
+		<script type="text/javascript" language="Javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<!-- Built-in scripts and styling -->
+		<script src="{{url_for('static', filename='mapScript.js')}}"></script>
+		<!-- <script type="text/javascript" src="js/africa_L0.geojson"></script>
+		<script type="text/javascript" src="js/NGR_L1.geojson"></script> -->
+		<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles.css') }}">
+		<!-- OLD IE Browsers -->
+		<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+	</head>
+	<body onload="initialiseMap()">
+		<div id="map" class="map" onload="initialiseMap()"></div>
+		<div id="js-overlay" class="overlay">
+	        <button type="button" id="js-remove" class="btn btn-danger">Remove</button>
+	    </div>
+		<div class="pane">
+			<p id="js-opacity">100%</p>
+			<div id="js-slider"></div>
+			<br><br>
+			<select id="country_select">
+		    	<option id="none_chosen">Choose a country</option>
+		    	<option id="ben_adm1">Benin</option>
+		    	<option id="cmr_adm1">Cameroon</option>
+		    	<option id="ner_adm1">Niger</option>
+		    	<option id="nga_adm1">Nigeria</option>
+		    	<option id="tcd_adm1">Chad</option>
+		    	<option id="zaf_adm1">South Africa</option>
+		    	<option id="zmb_adm1">Zambia</option>
+		    </select>
+		    <br>
+		    <br>
+		    <select id="raster_select">
+		    	<option id="no_pop_chosen">Choose a population group</option>
+		    	<option id="_pregs_pp_v2_2015">Pregnancies</option>
+		    	<option id="_births_pp_v2_2015">Births</option>
+		    	<option id="_wocba">Women of child-bearing age</option>
+		    </select>
+		    <br><br>
+		    <select id="impedance_select">
+		    	<option id="no_trans_chosen">Choose a mode of transport</option>
+		    	<option id="walking">Walking (5km/h)</option>
+		    	<option id="cycling">Cycling (15km/h)</option>
+		    	<option id="motorised">Motorised (60km/h)</option>
+		    </select>
+		    <br><br>
+			<label class="btn btn-default btn-file">
+				Browse<input type="file" id="files" name="files[]" style="display: none;" multiple />
+			</label>
+			<span class="readBytesButtons">
+			  <button class="btn btn-warning">Read file</button>
+			</span>
+			<br><br>
+			<button class="btn btn-primary" id="add-file-points">Add uploaded points</button>
+			<br>
+			<!-- <br><br>
+			<textarea id="byte_content" class="form-control" rows="3" cols="3"></textarea> -->
+			<br>
+			<button class="btn btn-success" id="add-points" type="button">Manually add points</button>
+			<br><br>
+	Maximum time to travel from facility<input id="time_travel" placeholder="Hours (e.g. 1.5)">	
+	<br><br>	
+    <button id="postPoints">Submit</button>
+    
+		
+		</div>
+		
+	</body>
+</html>
